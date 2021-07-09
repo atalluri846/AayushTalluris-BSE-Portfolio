@@ -3,7 +3,7 @@ This will serve as a brief description of your project. Limit this to three sent
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
-| Aayush Talluri | Lynbrook Highschool | Electrical Engineering | Incoming Sophomore
+| Aayush Talluri | Lynbrook Highschool | Computer Engineering | Incoming Sophomore
 
 ![Headstone Image](https://bluestampengineering.com/wp-content/uploads/2016/05/improve.jpg)
   
