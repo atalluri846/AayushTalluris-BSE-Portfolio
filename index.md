@@ -27,4 +27,6 @@ One of the main challenges I faced was making sure that everything would fit on 
 
 Next week I plan on adding the Ultrasonic Sensor and the Camera Module to detect the Ball and have the robot move towards the Ball. To accomplish this I will be using OpenCv to detect the color and the general location of the ball.
 
+![Screenshot (1145)](https://user-images.githubusercontent.com/71944910/125997325-f7a03805-2ff4-419b-aefc-916d13fd2472.png)
+
 [![First Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1626452781/video_to_markdown/images/youtube--TH925MDaLvM-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=TH925MDaLvM "AayushTMilestone1")){:target="_blank" rel="noopener"}
