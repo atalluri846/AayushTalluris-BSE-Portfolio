@@ -34,3 +34,367 @@ One of the main challenges I faced was making sure that everything would fit on 
 Next week I plan on adding the Ultrasonic Sensor and the Camera Module to detect the Ball and have the robot move towards the Ball. To accomplish this I will be using OpenCv to detect the color and the general location of the ball.
 
 ![Screenshot (1145)](https://user-images.githubusercontent.com/71944910/125997325-f7a03805-2ff4-419b-aefc-916d13fd2472.png)
+
+# Code
+
+```python
+import RPi.GPIO as GPIO
+import cv2
+import numpy as np
+import time
+import imutils
+
+in1 = 24
+in2 = 23
+ena = 25
+in3 = 17
+in4 = 22
+enb = 27
+GPIO_TRIGGER = 6
+GPIO_ECHO = 5
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(in1,GPIO.OUT)
+GPIO.setup(in2,GPIO.OUT)
+GPIO.setup(ena,GPIO.OUT)
+GPIO.setup(in3,GPIO.OUT)
+GPIO.setup(in4,GPIO.OUT)
+GPIO.setup(enb,GPIO.OUT)
+GPIO.output(in1,GPIO.LOW)
+GPIO.output(in2,GPIO.LOW)
+GPIO.output(in3,GPIO.LOW)
+GPIO.output(in4,GPIO.LOW)
+pa=GPIO.PWM(ena,1000)
+pb=GPIO.PWM(enb,1000)
+GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
+GPIO.setup(GPIO_ECHO, GPIO.IN)
+
+pa.start(80)
+pb.start(80)   
+
+vs = cv2.VideoCapture(0)
+Lower = (164, 196, 80)
+Upper = (179, 255, 219)
+#Lower = (102, 54, 48)
+#Upper = (179, 245, 255)
+center = None
+done = False
+time.sleep(2.0)
+while(1):
+    # Right Turn
+    GPIO.output(in1,GPIO.HIGH)
+    GPIO.output(in2,GPIO.LOW)
+    GPIO.output(in3,GPIO.LOW)
+    GPIO.output(in4,GPIO.HIGH)
+    time.sleep(0.500)
+    GPIO.output(in1,GPIO.LOW)
+    GPIO.output(in2,GPIO.LOW)
+    GPIO.output(in3,GPIO.LOW)
+    GPIO.output(in4,GPIO.LOW)
+    n=6
+    for i in range(n):
+        _, frame = vs.read()
+
+        if frame is None:
+            break
+
+        blurred = cv2.GaussianBlur(frame, (11, 11), 0)
+        width, height = frame.shape[:2]
+        hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
+        mask = cv2.inRange(hsv, Lower, Upper)
+        mask = cv2.erode(mask, None, iterations=2)
+        mask = cv2.dilate(mask, None, iterations=2)
+        cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
+                                cv2.CHAIN_APPROX_SIMPLE)
+        cnts = imutils.grab_contours(cnts)
+        center = None
+
+        if len(cnts) > 0:
+            c = max(cnts, key=cv2.contourArea)
+            ((x, y), radius) = cv2.minEnclosingCircle(c)
+            M = cv2.moments(c)
+            center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
+            done = True
+            break
+        time.sleep(0.1)
+    if done:
+        break
+
+done = False
+for i in range(11):
+    _, frame = vs.read()
+
+    if frame is None:
+        break
+
+    blurred = cv2.GaussianBlur(frame, (11, 11), 0)
+    width, height = frame.shape[:2]
+    hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
+    mask = cv2.inRange(hsv, Lower, Upper)
+    mask = cv2.erode(mask, None, iterations=2)
+    mask = cv2.dilate(mask, None, iterations=2)
+    cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
+                            cv2.CHAIN_APPROX_SIMPLE)
+    cnts = imutils.grab_contours(cnts)
+    center = None
+
+    if len(cnts) > 0:
+        c = max(cnts, key=cv2.contourArea)
+        ((x, y), radius) = cv2.minEnclosingCircle(c)
+        M = cv2.moments(c)
+        center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
+
+if center[0]<300:
+    while(1):
+        # Right Turn
+        GPIO.output(in1,GPIO.LOW)
+        GPIO.output(in2,GPIO.HIGH)
+        GPIO.output(in3,GPIO.HIGH)
+        GPIO.output(in4,GPIO.LOW)
+        time.sleep(0.150)
+        GPIO.output(in1,GPIO.LOW)
+        GPIO.output(in2,GPIO.LOW)
+        GPIO.output(in3,GPIO.LOW)
+        GPIO.output(in4,GPIO.LOW)
+        n=11
+        for i in range(n):
+            _, frame = vs.read()
+
+            if frame is None:
+                break
+
+            blurred = cv2.GaussianBlur(frame, (11, 11), 0)
+            width, height = frame.shape[:2]
+            hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
+            mask = cv2.inRange(hsv, Lower, Upper)
+            mask = cv2.erode(mask, None, iterations=2)
+            mask = cv2.dilate(mask, None, iterations=2)
+            cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
+                                    cv2.CHAIN_APPROX_SIMPLE)
+            cnts = imutils.grab_contours(cnts)
+            center = None
+
+            if len(cnts) > 0:
+                c = max(cnts, key=cv2.contourArea)
+                ((x, y), radius) = cv2.minEnclosingCircle(c)
+                M = cv2.moments(c)
+                center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
+                if center[0]>300 and center[0]<340:
+                    done = True
+                    break
+            time.sleep(0.5)
+        if done:
+            break
+elif center[0]>340:
+    while(1):
+        # left Turn
+        GPIO.output(in1,GPIO.HIGH)
+        GPIO.output(in2,GPIO.LOW)
+        GPIO.output(in3,GPIO.LOW)
+        GPIO.output(in4,GPIO.HIGH)
+        time.sleep(0.150)
+        GPIO.output(in1,GPIO.LOW)
+        GPIO.output(in2,GPIO.LOW)
+        GPIO.output(in3,GPIO.LOW)
+        GPIO.output(in4,GPIO.LOW)
+        n=11
+        for i in range(n):
+            _, frame = vs.read()
+
+            if frame is None:
+                break
+
+            blurred = cv2.GaussianBlur(frame, (11, 11), 0)
+            width, height = frame.shape[:2]
+            hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
+            mask = cv2.inRange(hsv, Lower, Upper)
+            mask = cv2.erode(mask, None, iterations=2)
+            mask = cv2.dilate(mask, None, iterations=2)
+            cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
+                                    cv2.CHAIN_APPROX_SIMPLE)
+            cnts = imutils.grab_contours(cnts)
+            center = None
+
+            if len(cnts) > 0:
+                c = max(cnts, key=cv2.contourArea)
+                ((x, y), radius) = cv2.minEnclosingCircle(c)
+                M = cv2.moments(c)
+                center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
+                if center[0]>300 and center[0]<340:
+                    done = True
+                    break
+            time.sleep(0.5)
+        if done:
+            break
+#stop
+GPIO.output(in1,GPIO.LOW)
+GPIO.output(in2,GPIO.LOW)
+GPIO.output(in3,GPIO.LOW)
+GPIO.output(in4,GPIO.LOW)
+
+def distance():
+    GPIO.output(GPIO_TRIGGER, True)
+    
+    time.sleep(0.00001)
+    GPIO.output(GPIO_TRIGGER, False)
+    
+    StartTime = time.time()
+    StopTime = time.time()
+    
+    while GPIO.input(GPIO_ECHO) == 0:
+        StartTime = time.time()
+    
+    while GPIO.input(GPIO_ECHO) == 1:
+        StopTime = time.time()
+    
+    TimeElapsed = StopTime - StartTime
+    
+    distance = (TimeElapsed * 34300)/2
+    
+    return distance
+
+def checkcenter():
+    for i in range(6):
+        _, frame = vs.read()
+
+        if frame is None:
+            break
+
+        blurred = cv2.GaussianBlur(frame, (11, 11), 0)
+        width, height = frame.shape[:2]
+        hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
+        mask = cv2.inRange(hsv, Lower, Upper)
+        mask = cv2.erode(mask, None, iterations=2)
+        mask = cv2.dilate(mask, None, iterations=2)
+        cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
+                                cv2.CHAIN_APPROX_SIMPLE)
+        cnts = imutils.grab_contours(cnts)
+        center = None
+
+        if len(cnts) > 0:
+            c = max(cnts, key=cv2.contourArea)
+            ((x, y), radius) = cv2.minEnclosingCircle(c)
+            M = cv2.moments(c)
+            center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
+            if center[0]>300 and center[0]<340:
+                return False
+            
+    return recenter(center)
+
+def recenter(center):
+    done=False
+    if center[0]<300:
+        while(1):
+            dista = distance()
+            if dista>=100.0 or dista<=5.0:
+                return True
+            # Right Turn
+            GPIO.output(in1,GPIO.LOW)
+            GPIO.output(in2,GPIO.HIGH)
+            GPIO.output(in3,GPIO.HIGH)
+            GPIO.output(in4,GPIO.LOW)
+            time.sleep(0.150)
+            GPIO.output(in1,GPIO.LOW)
+            GPIO.output(in2,GPIO.LOW)
+            GPIO.output(in3,GPIO.LOW)
+            GPIO.output(in4,GPIO.LOW)
+            n=11
+            for i in range(n):
+                _, frame = vs.read()
+
+                if frame is None:
+                    break
+
+                blurred = cv2.GaussianBlur(frame, (11, 11), 0)
+                width, height = frame.shape[:2]
+                hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
+                mask = cv2.inRange(hsv, Lower, Upper)
+                mask = cv2.erode(mask, None, iterations=2)
+                mask = cv2.dilate(mask, None, iterations=2)
+                cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
+                                        cv2.CHAIN_APPROX_SIMPLE)
+                cnts = imutils.grab_contours(cnts)
+                center = None
+
+                if len(cnts) > 0:
+                    c = max(cnts, key=cv2.contourArea)
+                    ((x, y), radius) = cv2.minEnclosingCircle(c)
+                    M = cv2.moments(c)
+                    center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
+                    if center[0]>300 and center[0]<340:
+                        done = True
+                        break
+                time.sleep(0.5)
+            if done:
+                return False
+    elif center[0]>340:
+        while(1):
+            dista = distance()
+            if dista>=100.0 or dista<=5.0:
+                return True
+            # left Turn
+            GPIO.output(in1,GPIO.HIGH)
+            GPIO.output(in2,GPIO.LOW)
+            GPIO.output(in3,GPIO.LOW)
+            GPIO.output(in4,GPIO.HIGH)
+            time.sleep(0.150)
+            GPIO.output(in1,GPIO.LOW)
+            GPIO.output(in2,GPIO.LOW)
+            GPIO.output(in3,GPIO.LOW)
+            GPIO.output(in4,GPIO.LOW)
+            n=11
+            for i in range(n):
+                _, frame = vs.read()
+
+                if frame is None:
+                    break
+
+                blurred = cv2.GaussianBlur(frame, (11, 11), 0)
+                width, height = frame.shape[:2]
+                hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
+                mask = cv2.inRange(hsv, Lower, Upper)
+                mask = cv2.erode(mask, None, iterations=2)
+                mask = cv2.dilate(mask, None, iterations=2)
+                cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
+                                        cv2.CHAIN_APPROX_SIMPLE)
+                cnts = imutils.grab_contours(cnts)
+                center = None
+
+                if len(cnts) > 0:
+                    c = max(cnts, key=cv2.contourArea)
+                    ((x, y), radius) = cv2.minEnclosingCircle(c)
+                    M = cv2.moments(c)
+                    center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
+                    if center[0]>300 and center[0]<340:
+                        done = True
+                        break
+                time.sleep(0.5)
+            if done:
+                return False
+
+while(1):
+    #move Forward
+    GPIO.output(in1,GPIO.HIGH)
+    GPIO.output(in2,GPIO.LOW)
+    GPIO.output(in3,GPIO.HIGH)
+    GPIO.output(in4,GPIO.LOW)
+    time.sleep(0.15)
+    GPIO.output(in1,GPIO.LOW)
+    GPIO.output(in2,GPIO.LOW)
+    GPIO.output(in3,GPIO.LOW)
+    GPIO.output(in4,GPIO.LOW)
+    #Checks if the robot is still centered on the ball and if it isn't it will recenter it
+    if checkcenter():
+        break
+    #Uses Ultrasonic Sensor to check how far away the ball is
+    dist = distance()
+    if dist>=100.0 or dist<=5.0:
+        #stop
+        GPIO.output(in1,GPIO.LOW)
+        GPIO.output(in2,GPIO.LOW)
+        GPIO.output(in3,GPIO.LOW)
+        GPIO.output(in4,GPIO.LOW)
+        break
+    time.sleep(0.5)
+GPIO.cleanup()
+```
