@@ -7,7 +7,7 @@ This will serve as a brief description of your project. Limit this to three sent
 
 # Presentation
 
-[![AayushTDemoNight](https://res.cloudinary.com/marcomontalbano/image/upload/v1627057808/video_to_markdown/images/youtube--Y27wWg97teQ-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=Y27wWg97teQ&feature=emb_logo "AayushTDemoNight"){:target="_blank" rel="noopener"}
+[![AayushTDemoNight](https://res.cloudinary.com/marcomontalbano/image/upload/v1627057808/video_to_markdown/images/youtube--Y27wWg97teQ-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=Y27wWg97teQ&feature=emb_logo "AayushTDemoNight")
   
 # Final Milestone - Grabbing the Ball
 
@@ -21,7 +21,7 @@ However, this is a work in progress and I still need to code the servos on Robot
 
 # Second Milestone - Tracking the Ball
 
-[![AayushTMilestone2](https://res.cloudinary.com/marcomontalbano/image/upload/v1627057635/video_to_markdown/images/youtube--Tc143IMOkV8-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=Tc143IMOkV8&feature=emb_logo "AayushTMilestone2"){:target="_blank" rel="noopener"}
+[![AayushTMilestone2](https://res.cloudinary.com/marcomontalbano/image/upload/v1627057635/video_to_markdown/images/youtube--Tc143IMOkV8-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=Tc143IMOkV8&feature=emb_logo "AayushTMilestone2")
 
 During my second milestone I setup the ball tracking software for my robot. First, I attatched a camera module to the Raspberry Pi and ran some simple test code to make sure it was capturing the frames correctly. Afterwards, I downloaded the OpenCV software onto my Pi and after some testing I was able to make it detect the color bright red. After some difficult tests and bugs, I was able to have the OpenCV detect the ball and grab the contours and the center of the ball. In order to achieve this I had to use the python library imutils and have it installed on my Pi as well. In order to detect the distance between the robto and the ball I planned on using an Ultrasonic Sensor which I then wired up to the Pi as well. Below is a circuit diagram of how I attatched it to the Pi. After I made sure that the Ultrasonic Sensor was working correctly and gathering the distances in centimeters. I then needed to incorporate the movement of the robot witht the data I collected from the Camera Module and the Ultrasonic Sensor. I was able to have the robot turn right until it noticed the red ball was in the camera frame. It would then slowly move either left or right to center the red ball onto the camera frame and would stop. Finally the robot would move forward in small increments towards the ball and if it went off center it would recenter the robot onto the center of the ball. I need the movements to be precise as I was planning on adding a claw to the front of the robot which needed the ball to be in the exact center of the robot. 
 
@@ -33,7 +33,7 @@ One of the main challenges I faced this week was definetly wiring up the Ultraso
 
 # First Milestone - Movement of Robot
   
-[![First Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1626452781/video_to_markdown/images/youtube--TH925MDaLvM-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=TH925MDaLvM "AayushTMilestone1")){:target="_blank" rel="noopener"}
+{![First Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1626452781/video_to_markdown/images/youtube--TH925MDaLvM-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=TH925MDaLvM "AayushTMilestone1")
 
 My first milestone was setting up and hooking up the Raspberry Pi 3 and the l298n Motor Driver to the Smart Car Chassis. First, I setup the Raspberry Pi 3 by downloading the Raspberry Pi OS (Raspbian) onto a MicroSD card using a Raspberry Pi Imager on my PC.  Afterwards, I built the Smart Car Chassis which set the base model for my robot. After I finished the Smart Car Chassis, I wired up the l298n motor driver to the 4 DC motors, attatched the battery pack, and the Raspberry Pi 3 GPIO to the motor driver using some jumper wire. I then started coding for the Motor driver by first making shadow code on my computer using Microsoft Visual Studio in Python. Afterwards, I would transfer the code to Github and copy onto the Pi. Originally, I made some test code to make sure that the DC motors and l298n Motor Driver were wired and working correctly. Afterwards, I imporved my test code and the robot was now able to move forward and backward and able to turn left and right. Since there were four motors I needed to use a tank drive in order to accomplish this. Finally, I made my code run on the Raspberry Pi upon startup which made it easier to run the code as before I needed to plug my Raspberry Pi into the monitor just to start the code. 
 
