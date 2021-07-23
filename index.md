@@ -37,6 +37,8 @@ Next week I plan on adding the Ultrasonic Sensor and the Camera Module to detect
 
 ![Screenshot (1145)](https://user-images.githubusercontent.com/71944910/125997325-f7a03805-2ff4-419b-aefc-916d13fd2472.png)
 
+# Reflection
+
 # Code
 
 ```python
