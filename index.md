@@ -3,7 +3,7 @@ My Project is a Raspberry Pi controlled robot that can track and grab a ball. It
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
-| Aayush T | Lynbrook Highschool | Computer Engineering | Incoming Sophomore
+| Aayush T | Lynbrook Highschool | Computer Engineering | Rising Sophomore
 
 ![Milestone3RobotImage](https://user-images.githubusercontent.com/71944910/126813366-808ef6e3-8b04-4e58-98da-ee6fde81aec9.JPG)
 
