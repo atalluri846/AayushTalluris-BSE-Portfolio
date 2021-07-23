@@ -5,6 +5,10 @@ This will serve as a brief description of your project. Limit this to three sent
 |:--:|:--:|:--:|:--:|
 | Aayush T | Lynbrook Highschool | Computer Engineering | Incoming Sophomore
 
+# Presentation
+
+[![AayushTDemoNight](https://res.cloudinary.com/marcomontalbano/image/upload/v1627057808/video_to_markdown/images/youtube--Y27wWg97teQ-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=Y27wWg97teQ&feature=emb_logo "AayushTDemoNight"){:target="_blank" rel="noopener"}
+
 ![Headstone Image](https://bluestampengineering.com/wp-content/uploads/2016/05/improve.jpg)
   
 # Final Milestone
