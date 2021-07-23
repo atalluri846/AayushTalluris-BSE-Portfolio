@@ -13,7 +13,9 @@ This will serve as a brief description of your project. Limit this to three sent
 
 ![Milestone3RobotImage](https://user-images.githubusercontent.com/71944910/126813366-808ef6e3-8b04-4e58-98da-ee6fde81aec9.JPG)
 
-My final milestone is the increased reliability and accuracy of my robot. I ameliorated the sagging and fixed the reliability of the finger. As discussed in my second milestone, the arm sags because of weight. I put in a block of wood at the base to hold up the upper arm; this has reverberating positive effects throughout the arm. I also realized that the forearm was getting disconnected from the elbow servo’s horn because of the weight stress on the joint. Now, I make sure to constantly tighten the screws at that joint.
+My final milestone added the Robot Arm/Claw to my ball tracking robot. I used the Lafvin Smart Robot Arm Kit and first created the Robot Arm with the Claw and tested it out using the code provided by the Lafvin company. After I made sure it worked I started attaching it to my robot. I took out the bottom half of the Robot Arm/Claw, leaving only three servo motors, and took out the arduino as well. Afterward I used some screws to attach the Robot Arm/Claw to the robot, shown in the image above, and made sure, if the robot arm moved down it could grab the ball. Afterward, I wired up the servo motors, which contorlled the movement of the arm, to the Raspberry Pi, as shown in the image below. 
+
+However, this is a work in progress and I still need to code the servos on Robot Arm and will update this page as soon as it is finished. I will also show a demonstrastion of the robot working.
 
 ![Screenshot (1149)](https://user-images.githubusercontent.com/71944910/126820216-9f3d2d91-d620-4ab5-b001-3ab21cabfcad.png)
 
