@@ -1,4 +1,4 @@
-﻿# A Robot That Uses Computer Vision To Track A Ball
+﻿# A Ball Tracking Robot With A Claw
 This will serve as a brief description of your project. Limit this to three sentences because it can become overly long at that point. This copy should draw the user in and make she/him want to read more.
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
@@ -38,6 +38,9 @@ Next week I plan on adding the Ultrasonic Sensor and the Camera Module to detect
 ![Screenshot (1145)](https://user-images.githubusercontent.com/71944910/125997325-f7a03805-2ff4-419b-aefc-916d13fd2472.png)
 
 # Reflection
+
+Challenges
+Lessons Learned
 
 # Code
 
