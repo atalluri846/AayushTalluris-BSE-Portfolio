@@ -75,13 +75,10 @@ pb.start(80)
 vs = cv2.VideoCapture(0)
 Lower = (164, 196, 80)
 Upper = (179, 255, 219)
-#Lower = (102, 54, 48)
-#Upper = (179, 245, 255)
 center = None
 done = False
 time.sleep(2.0)
 while(1):
-    # Right Turn
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
@@ -146,7 +143,6 @@ for i in range(11):
 
 if center[0]<300:
     while(1):
-        # Right Turn
         GPIO.output(in1,GPIO.LOW)
         GPIO.output(in2,GPIO.HIGH)
         GPIO.output(in3,GPIO.HIGH)
@@ -187,7 +183,6 @@ if center[0]<300:
             break
 elif center[0]>340:
     while(1):
-        # left Turn
         GPIO.output(in1,GPIO.HIGH)
         GPIO.output(in2,GPIO.LOW)
         GPIO.output(in3,GPIO.LOW)
@@ -226,7 +221,7 @@ elif center[0]>340:
             time.sleep(0.5)
         if done:
             break
-#stop
+
 GPIO.output(in1,GPIO.LOW)
 GPIO.output(in2,GPIO.LOW)
 GPIO.output(in3,GPIO.LOW)
@@ -288,7 +283,6 @@ def recenter(center):
             dista = distance()
             if dista>=100.0 or dista<=5.0:
                 return True
-            # Right Turn
             GPIO.output(in1,GPIO.LOW)
             GPIO.output(in2,GPIO.HIGH)
             GPIO.output(in3,GPIO.HIGH)
@@ -332,7 +326,7 @@ def recenter(center):
             dista = distance()
             if dista>=100.0 or dista<=5.0:
                 return True
-            # left Turn
+            
             GPIO.output(in1,GPIO.HIGH)
             GPIO.output(in2,GPIO.LOW)
             GPIO.output(in3,GPIO.LOW)
@@ -373,7 +367,6 @@ def recenter(center):
                 return False
 
 while(1):
-    #move Forward
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.HIGH)
@@ -383,13 +376,10 @@ while(1):
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.LOW)
-    #Checks if the robot is still centered on the ball and if it isn't it will recenter it
     if checkcenter():
         break
-    #Uses Ultrasonic Sensor to check how far away the ball is
     dist = distance()
     if dist>=100.0 or dist<=5.0:
-        #stop
         GPIO.output(in1,GPIO.LOW)
         GPIO.output(in2,GPIO.LOW)
         GPIO.output(in3,GPIO.LOW)
