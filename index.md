@@ -1,9 +1,11 @@
 ﻿# A Ball Tracking Robot With A Claw
-This will serve as a brief description of your project. Limit this to three sentences because it can become overly long at that point. This copy should draw the user in and make she/him want to read more.
+My Project is a Raspberry Pi controlled robot that can track and grab a ball. It can detect where the ball is in relation to the robot and move towards it. Afterwards, it can grab the ball and place it in a goal.
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | Aayush T | Lynbrook Highschool | Computer Engineering | Incoming Sophomore
+
+![Milestone3RobotImage](https://user-images.githubusercontent.com/71944910/126813366-808ef6e3-8b04-4e58-98da-ee6fde81aec9.JPG)
 
 # Presentation
 
@@ -11,9 +13,9 @@ This will serve as a brief description of your project. Limit this to three sent
   
 # Final Milestone - Grabbing the Ball
 
-![Milestone3RobotImage](https://user-images.githubusercontent.com/71944910/126813366-808ef6e3-8b04-4e58-98da-ee6fde81aec9.JPG)
+![WorkInProgress](https://user-images.githubusercontent.com/71944910/126839153-66a0523e-b53b-4184-a4e0-d97a5e559262.jpg)
 
-My final milestone added the Robot Arm/Claw to my ball tracking robot. I used the Lafvin Smart Robot Arm Kit and first created the Robot Arm with the Claw and tested it out using the code provided by the Lafvin company. After I made sure it worked I started attaching it to my robot. I took out the bottom half of the Robot Arm/Claw, leaving only three servo motors, and took out the arduino as well. Afterward I used some screws to attach the Robot Arm/Claw to the robot, shown in the image above, and made sure, if the robot arm moved down it could grab the ball. Afterward, I wired up the servo motors, which contorlled the movement of the arm, to the Raspberry Pi, as shown in the image below. 
+My final milestone added the Robot Arm/Claw to my ball tracking robot. I used the Lafvin Smart Robot Arm Kit and first created the Robot Arm with the Claw and tested it out using the code provided by the Lafvin company. After I made sure it worked I started attaching it to my robot. I took out the bottom half of the Robot Arm/Claw, leaving only three servo motors, and took out the arduino as well. Afterward I used some screws to attach the Robot Arm/Claw to the robot and made sure, if the robot arm moved down it could grab the ball. Afterward, I wired up the servo motors, which contorlled the movement of the arm, to the Raspberry Pi, as shown in the image below. 
 
 However, this is a work in progress and I still need to code the servos on Robot Arm and will update this page as soon as it is finished. I will also show a demonstrastion of the robot working.
 
