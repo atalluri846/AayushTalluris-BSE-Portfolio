@@ -3,7 +3,7 @@ This will serve as a brief description of your project. Limit this to three sent
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
-| Aayush Talluri | Lynbrook Highschool | Computer Engineering | Incoming Sophomore
+| Aayush T | Lynbrook Highschool | Computer Engineering | Incoming Sophomore
 
 ![Headstone Image](https://bluestampengineering.com/wp-content/uploads/2016/05/improve.jpg)
   
@@ -17,7 +17,7 @@ My final milestone is the increased reliability and accuracy of my robot. I amel
 
 ![Screenshot (1143)](https://user-images.githubusercontent.com/71944910/125993292-3ed154b4-d993-4a5e-af77-dbb76fc616fb.png)
 
-[![Third Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1612574014/video_to_markdown/images/youtube--y3VAmNlER5Y-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=y3VAmNlER5Y&feature=emb_logo "Second Milestone"){:target="_blank" rel="noopener"}
+[![AayushTMilestone2](https://res.cloudinary.com/marcomontalbano/image/upload/v1627057635/video_to_markdown/images/youtube--Tc143IMOkV8-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=Tc143IMOkV8&feature=emb_logo "AayushTMilestone2"){:target="_blank" rel="noopener"}
 # First Milestone
   
 
