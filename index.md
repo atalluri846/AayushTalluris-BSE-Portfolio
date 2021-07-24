@@ -68,7 +68,15 @@ Turn on the monitor and begin the initial configurations.
 I faced multiple challenges throughout BlueStamp but here are two of the biggest challenges I faced. The first challenge I faced was making sure that everything would fit on the Smart Car Chassis. The Motor Driver, the 4 DC Hobby Motors, the 2 Battery Packs(One for the Raspberry Pi and one for the Motor Driver), the Raspberry Pi, the breadboard with the Ultrasonic Sensor, the camera module, all the jumper wires, and the robot arm were all pretty large and finding a way to put them all in the chassis took multiple hours of planning and strategic placement. The second large challenge I faced was with OpenCV. I was completely new to the software and finding out how to detect the color, the ball, and then the contours of the ball as well as the center took days of me trying to code and fixing bugs. Although I faced muliple challenges, it gave me new insights on how it is like to be an engineer and caused me to love the engineering process even more. I enjoyed both the hardware and software components and the process of trouble-shooting and beeing able to think up of out-of-the-box solutions. Additionally, after I finished my base project, seeing my vision come to life was an overwhelming feeling.
 
 # Code
-
+<details>
+  <summary>Click to expand!</summary>
+  
+  ## Heading
+  1. A numbered
+  2. list
+     * With some
+     * Sub bullets
+</details>
 ```python
 import RPi.GPIO as GPIO
 import cv2
