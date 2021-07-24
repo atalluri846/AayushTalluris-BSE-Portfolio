@@ -77,6 +77,8 @@ I faced multiple challenges throughout BlueStamp but here are two of the biggest
      * With some
      * Sub bullets
 </details>
+
+
 ```python
 import RPi.GPIO as GPIO
 import cv2
