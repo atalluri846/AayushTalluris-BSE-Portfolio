@@ -12,12 +12,7 @@ My Project is a Raspberry Pi controlled robot that can track and grab a ball. It
 [![AayushTDemoNight](https://res.cloudinary.com/marcomontalbano/image/upload/v1627057808/video_to_markdown/images/youtube--Y27wWg97teQ-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=Y27wWg97teQ&feature=emb_logo "AayushTDemoNight")
   
 # Final Milestone - Grabbing the Ball
-
-![WorkInProgress](https://user-images.githubusercontent.com/71944910/126839153-66a0523e-b53b-4184-a4e0-d97a5e559262.jpg)
-
 My final milestone added the Robot Arm/Claw to my ball tracking robot. I used the Lafvin Smart Robot Arm Kit and first created the Robot Arm with the Claw and tested it out using the code provided by the Lafvin company. After I made sure it worked I started attaching it to my robot. I took out the bottom half of the Robot Arm/Claw, leaving only three servo motors, and took out the arduino as well. Afterward I used some screws to attach the Robot Arm/Claw to the robot and made sure, if the robot arm moved down it could grab the ball. Afterward, I wired up the servo motors, which controlled the movement of the arm, to the Raspberry Pi, as shown in the image below. 
-
-However, this is a work in progress and I still need to code the servos on Robot Arm and will update this page as soon as it is finished. I will also show a demonstrastion of the robot working.
 
 ![Screenshot (1149)](https://user-images.githubusercontent.com/71944910/126820216-9f3d2d91-d620-4ab5-b001-3ab21cabfcad.png)
 
